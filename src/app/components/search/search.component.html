@@ -1,0 +1,8 @@
+<div class="container">
+ <div class="search-box">
+    <input type="text" class="txt" spellcheck="false" [(ngModel)]="filter" (ngModelChange)="filterPokemons()">
+    <div class="list">
+        <div *ngFor="let item of filteredPokemons" class="pokemon" tabindex="0" (click)="selectPokemon(item)">{{item}}</div>
+    </div>
+ </div>
+</div>

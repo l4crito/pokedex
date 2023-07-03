@@ -1,0 +1,27 @@
+.bg {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    
+    .pokedex{
+        z-index: 1;
+        width: 400px;
+        position: relative;
+        .photo{
+            width: 278px;
+            height: 278px;
+            top: 155px;
+            left: 70px;
+            position: absolute;
+            z-index: 2;
+        }
+
+    }
+}
+
+app-search{
+    z-index: 3;
+}
