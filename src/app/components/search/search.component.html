@@ -1,8 +1,18 @@
 <div class="container">
- <div class="search-box">
-    <input type="text" class="txt" spellcheck="false" [(ngModel)]="filter" (ngModelChange)="filterPokemons()">
-    <div class="list">
-        <div *ngFor="let item of filteredPokemons" class="pokemon" tabindex="0" (click)="selectPokemon(item)">{{item}}</div>
+    <div class="search-box">
+        <div class="search">
+            <input id="txtSearch" #txtSearch type="text" class="txt" spellcheck="false" [(ngModel)]="dataService.filter"
+                (ngModelChange)="filterPokemons()" (keydown.ArrowDown)="moveSelectionUp()">
+            <button mat-icon-button (click)="clearAndFocus()">
+                <mat-icon>{{dataService.filter?'close':'search'}}</mat-icon>
+            </button>
+        </div>
+        <div class="list">
+            <div *ngFor="let item of dataService.filteredPokemons; let i = index" [class.selected]="i === selectedIndex"
+                class="pokemon" tabindex="0" (keydown.enter)="selectPokemon(item)" (click)="selectPokemon(item)"
+                tabindex="0" [id]="'div_' + i" (keydown.ArrowUp)="moveSelectionUp()"
+                (keydown.ArrowDown)="moveSelectionDown()"
+                [ngClass]="{'selected !important': item === dataService.pokemon?.name}">{{item}}</div>
+        </div>
     </div>
- </div>
 </div>

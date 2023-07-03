@@ -1,8 +1,8 @@
-.container{
-    position:fixed;
-    top:0;
-    left:0;
-    background-color: rgba(0, 0, 0, 0.901);
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.914);
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -10,9 +10,8 @@
     justify-content: center;
     flex-direction: column;
     z-index: 5;
-
 }
-.search-box{
+.search-box {
     width: 500px;
     height: 500px;
     border-radius: 10px;
@@ -21,31 +20,45 @@
     justify-content: flex-start;
     flex-direction: column;
 }
-.txt{
-    all: unset;
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    border: none;
-    background-color: transparent;
-    border-bottom: 3px solid rgb(0, 102, 255);
-    padding: 5px;
-    margin-bottom: 20px;
-    width: 500px;
-    :focus{
-        outline: none;
+
+
+.search{
+    display: flex;
+    align-items: center;
+    position: relative;
+    .txt {
+        all: unset;
+        color: white;
+        font-size: 40px;
+        font-weight: bold;
         border: none;
+        background-color: transparent;
+        border-bottom: 3px solid rgb(0, 102, 255);
+        padding: 5px;
+        margin-bottom: 20px;
+        width: 500px;
+        :focus {
+            outline: none;
+            border: none;
+        }
     }
-    
+    button{
+        color: rgb(0, 102, 255);
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
 }
-.list{
+
+.list {
     color: rgba(255, 255, 255, 0.795);
     font-size: 20px;
     width: 100%;
-    .pokemon{
-        
+    .pokemon {
+        outline: none;
         width: min-content;
-        padding: 15px;
+        padding: 10px 15px;
+        margin: 5px;
         letter-spacing: 5px;
         text-transform: uppercase;
         font-weight: 100;
@@ -53,11 +66,16 @@
         transition: ease-in-out 0.3s;
         background-color: transparent;
         border-radius: 30px;
-        &:hover,&:focus{
+        &:hover,
+        &:focus {
             background-color: rgb(0, 102, 255);
+            border: solid 1px rgb(0, 102, 255);
+            transform: scale(1.1);
             color: white;
-            border: none;
-            outline: none;
         }
     }
+}
+
+.selected {
+    border: solid 1px rgb(0, 102, 255);
 }

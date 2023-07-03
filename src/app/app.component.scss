@@ -10,11 +10,25 @@
         z-index: 1;
         width: 400px;
         position: relative;
+        button{
+            left: 49px;
+            top: 34px;
+            position: absolute;
+            color: white;
+            z-index: 3;
+        }
         .photo{
             width: 278px;
             height: 278px;
             top: 155px;
             left: 70px;
+            position: absolute;
+            z-index: 2;
+        }
+        .click{
+            top: -20px;
+            left: -300px;
+            width: 300px;
             position: absolute;
             z-index: 2;
         }

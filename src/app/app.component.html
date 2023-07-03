@@ -1,7 +1,13 @@
-<app-search (pokemonSelected)="getPokemonInfo($event)" *ngIf="showSearch"></app-search>
+<app-search (pokemonSelected)="setPokemon($event)" (closeSearch)="dataService.showSearch=false"
+    *ngIf="dataService.showSearch"></app-search>
 <div class="bg">
     <div class="pokedex">
-        <img [src]="photo" alt="" *ngIf="photo" class="photo">
-        <img src="../assets/pokedex.png" alt="" (click)="showSearch=true" class="pokedex">
+        <button mat-icon-button (click)="dataService.showSearch=true">
+            <mat-icon>search</mat-icon>
+        </button>
+        <img [src]="dataService.pokemon.sprites.other.dream_world.front_default" alt="" *ngIf="dataService.pokemon"
+            class="photo">
+        <img src="../assets/pokedex.png" alt="" class="pokedex">
+        <img src="../assets/click.png" class="click">
     </div>
 </div>

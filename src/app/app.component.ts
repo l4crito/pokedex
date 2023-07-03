@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { PokemonService } from './client/pokemon.service';
 import { Pokemon } from 'src/model/pokemon';
+import { HotkeysService } from '@ngneat/hotkeys';
+import { DataService } from './service/data.service';
 
 @Component({
   selector: 'app-root',
@@ -9,25 +11,26 @@ import { Pokemon } from 'src/model/pokemon';
 })
 export class AppComponent {
   title = 'pokedex';
-  pokemons: string[] = [];
-  filteredPokemons: string[] = [];
-  pokemon: Pokemon | any = null;
-  photo: string = '../assets/pokeball.png';
-  showSearch: boolean = false;
 
-  constructor(private pokemonService: PokemonService) {
-    this.pokemonService.getAllPokemon().subscribe((data: any) => {
-      this.pokemons = data.pokemon_entries.map((pokemon: any) => pokemon.pokemon_species.name);
-    })
+
+  constructor(private pokemonService: PokemonService, private hotkeys: HotkeysService, public dataService: DataService) {
   }
-
-  getPokemonInfo(name: string) {
-    this.showSearch = false;
-    this.pokemonService.getPpkemon(name).subscribe((data: any) => {
-      this.pokemon = data;
-      this.photo = this.pokemon.sprites.other["official-artwork"].front_default || this.pokemon.sprites.other.dream_world.front_default || this.pokemon.sprites.front_default;
-      console.log(this.pokemon);
-    })
+  ngOnInit() {
+  
+    this.hotkeys.addShortcut({ keys: 'meta.f', allowIn: ['INPUT', 'SELECT', 'TEXTAREA', 'CONTENTEDITABLE'] }).subscribe(() => 
+    this.dataService.showSearch = true
+    );
+    this.hotkeys.addShortcut({ keys: 'esc', allowIn: ['INPUT', 'SELECT', 'TEXTAREA', 'CONTENTEDITABLE'] }).subscribe(() => {
+      if (this.dataService.filter && this.dataService.showSearch) {
+        this.dataService.clearSearch();
+      } else {
+        this.dataService.showSearch = false;
+      }
+    });
+  }
+  setPokemon(pokemon: Pokemon) {
+    this.dataService.showSearch = false;
+    this.dataService.pokemon = pokemon;
   }
 
 }
