@@ -39,3 +39,36 @@
 app-search{
     z-index: 3;
 }
+.info{
+    box-sizing: border-box;
+    margin: 10px;
+    width: 400px;
+    height: 678px;
+    background-color: #d2242a;
+    font-weight: 300;
+    font-size: 20px;
+    padding: 20px;
+    display: flex;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: 3px;
+    color: white;
+    border-radius: 30px;
+    border: solid 8px black;
+    line-height: 30px;
+    flex-direction: column;
+    .screen{
+        box-sizing: border-box;
+        background-color: #57595b;
+        width: 350px;
+        height: 628px;
+        border-radius: 5px;
+        padding: 20px;
+        border: solid 5px #8f8d8c;    
+    }
+    .name{
+        text-transform: uppercase;
+        font-size: 30px;
+        font-weight: 600;
+        margin: 20px;
+    }
+}

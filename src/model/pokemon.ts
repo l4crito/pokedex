@@ -1,5 +1,6 @@
 export interface Pokemon {
     abilities: Ability[]
+    description?: string
     base_experience: number
     forms: Form[]
     game_indices: Index[]
