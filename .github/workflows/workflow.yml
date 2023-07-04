@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main  # or your desired branch
-    paths:
-      - 'src/**'  # Update with your project's source code directory
 
 jobs:
   build:
