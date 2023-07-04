@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '12.x'
       - run: yarn install
-      - run: npm run ng build -- --prod --base-href=/justdrink/
+      - run: npm run ng build -- --prod --base-href=/pokedex/
       # - run: npm run ng test -- --browsers ChromeHeadless
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
