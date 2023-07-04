@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: '18.x'
       - run: yarn install
-      - run: npm run ng build -- --configuration production --base-href="https://l4crito.github.io/pokedex/""
+      - run: npm run ng build -- --configuration production --base-href="https://l4crito.github.io/pokedex/"
       # - run: npm run ng test -- --browsers ChromeHeadless
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
