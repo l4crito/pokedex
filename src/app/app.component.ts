@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { PokemonService } from './client/pokemon.service';
 import { Pokemon } from 'src/model/pokemon';
 import { HotkeysService } from '@ngneat/hotkeys';
@@ -11,6 +11,7 @@ import { DataService } from './service/data.service';
 })
 export class AppComponent {
   title = 'pokedex';
+  @ViewChild('audioElement') audioElement: ElementRef | any;
 
 
   constructor(private pokemonService: PokemonService, private hotkeys: HotkeysService, public dataService: DataService) {
@@ -29,6 +30,7 @@ export class AppComponent {
     });
   }
   setPokemon(pokemon: Pokemon) {
+    this.playSound();
     this.dataService.specie = null;
     this.dataService.showSearch = false;
     this.dataService.pokemon = pokemon;
@@ -51,6 +53,12 @@ export class AppComponent {
         clearInterval(intervalId);
       }
     }, delay);
+  }
+
+
+  playSound(): void {
+    const audioPlayer: HTMLAudioElement = this.audioElement.nativeElement;
+    audioPlayer.play();
   }
 
 }
