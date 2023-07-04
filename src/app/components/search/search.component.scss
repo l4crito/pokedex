@@ -33,7 +33,7 @@
         font-weight: bold;
         border: none;
         background-color: transparent;
-        border-bottom: 3px solid #00aeee;
+        border-bottom: 3px solid rgb(210, 51, 51);
         padding: 5px;
         margin-bottom: 20px;
         width: 500px;
@@ -43,7 +43,7 @@
         }
     }
     button{
-        color: #00aeee;
+        color: rgb(210, 51, 51);
         position: absolute;
         right: 10px;
         top: 10px;
@@ -68,8 +68,8 @@
         border-radius: 30px;
         &:hover,
         &:focus {
-            background-color: #00aeee;
-            border: solid 1px #00aeee;
+            background-color: rgb(210, 51, 51);
+            border: solid 1px rgb(210, 51, 51);
             transform: scale(1.1);
             color: white;
         }
@@ -77,5 +77,5 @@
 }
 
 .selected {
-    border: solid 1px #00aeee;
+    border: solid 1px rgb(210, 51, 51);
 }
