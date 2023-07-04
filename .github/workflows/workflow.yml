@@ -1,31 +1,26 @@
 name: Build and Deploy
-
 on:
   push:
-    branches:
-      - main  # or your desired branch
-
+    branches: [main]
+  pull_request:
+    branches: [main]
+    
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
+  build-and-deploy:
+    runs-on: ubuntu-22.04
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v2.3.1 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
+      - name: Install and Build and Test 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+        uses: actions/setup-node@v1
         with:
-          node-version: 14
-
-      - name: Install dependencies
-        run: npm i
-
-      - name: Build Angular project
-        run: ng build -- --configuration production
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+          node-version: '12.x'
+      - run: yarn install
+      - run: npm run ng build -- --prod --base-href=/justdrink/
+      # - run: npm run ng test -- --browsers ChromeHeadless
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/pokedex  # Update with your project's build output directory
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: dist/pokedex # The folder the action should deploy.
+          CLEAN: true # Automatically remove deleted files from the deploy branch
